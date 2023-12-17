@@ -2,6 +2,25 @@
 #include <stdlib.h>
 #include <time.h>
 
+void displayHeader() {
+    printf("**********************************************\n");
+    printf("*             Welcome to the Game Center!     *\n");
+    printf("**********************************************\n\n");
+}
+
+void displayMenu() {
+    printf("=====================================================\n");
+    printf("|                    Game Center Menu               |\n");
+    printf("=====================================================\n");
+    printf("|  1. Play Tic Tac Toe                              |\n");
+    printf("|  2. Play Rock-Paper-Scissors                      |\n");
+    printf("|  3. Tic Tac Toe Instructions                      |\n");
+    printf("|  4. Rock-Paper-Scissors Instructions              |\n");
+    printf("|  5. Quit                                          |\n");
+    printf("=====================================================\n");
+    printf("Enter your choice (1-5): ");
+}
+
 void playTicTacToe() {
     printf("Tic Tac Toe Game\n");
 	char board[3][3]; // 3x3 Tic Tac Toe board
@@ -148,17 +167,46 @@ void playRockPaperScissors() {
     }
 }
 
+void printTicTacToeInstructions() {
+    printf("### Tic Tac Toe Instructions ###\n");
+    printf("1. Objective: Get three marks in a row (horizontally, vertically, or diagonally) on a 3x3 grid.\n");
+    printf("2. Players: Two players take turns marking spaces. One uses 'X', and the other uses 'O'.\n");
+    printf("3. Gameplay:\n");
+    printf("   - Players input row and column numbers (0-2) to place their mark.\n");
+    printf("   - The game continues until a player gets three marks in a row or the grid fills.\n");
+    printf("4. Winning: First to get three marks in a row wins.\n");
+    printf("5. Example:\n");
+    printf("   - Game grid:\n");
+    printf("     0 1 2\n");
+    printf("   0 | | \n");
+    printf("    -----\n");
+    printf("   1 | | \n");
+    printf("    -----\n");
+    printf("   2 | | \n");
+    printf("   - Players enter row and column numbers to place marks.\n");
+    printf("   - The game continues until someone wins or the grid fills.\n");
+}
+void printRockPaperScissorsInstructions() {
+    printf("### Rock-Paper-Scissors Instructions ###\n");
+    printf("1. Objective: Defeat your opponent by choosing Rock, Paper, or Scissors.\n");
+    printf("2. Players: Two players (human vs. computer) make simultaneous selections.\n");
+    printf("3. Gameplay:\n");
+    printf("   - Choose Rock (0), Paper (1), or Scissors (2).\n");
+    printf("   - The winner is determined based on the selections:\n");
+    printf("       Rock beats Scissors, Scissors beats Paper, Paper beats Rock.\n");
+    printf("4. Example:\n");
+    printf("   - You choose Rock, and the computer chooses Scissors.\n");
+    printf("   - You win because Rock beats Scissors.\n");
+}
+
+
 int main() {
     int choice;
 
-    printf("Welcome to the Game Center!\n");
+    displayHeader();
 
     do {
-        printf("\nMenu:\n");
-        printf("1. Play Tic Tac Toe\n");
-        printf("2. Play Rock-Paper-Scissors\n");
-        printf("3. Quit\n");
-        printf("Enter your choice (1-3): ");
+        displayMenu();
         scanf("%d", &choice);
 
         switch (choice) {
@@ -169,13 +217,18 @@ int main() {
                 playRockPaperScissors();
                 break;
             case 3:
-                printf("Goodbye!\n");
+                printTicTacToeInstructions();
+                break;
+            case 4:
+                printRockPaperScissorsInstructions();
+                break;
+            case 5:
+                printf("Thank you for playing! Goodbye!\n");
                 break;
             default:
-                printf("Invalid choice. Please enter a number between 1 and 3.\n");
+                printf("Invalid choice. Please enter a number between 1 and 5.\n");
         }
-    } while (choice != 3);
+    } while (choice != 5);
 
     return 0;
 }
-
